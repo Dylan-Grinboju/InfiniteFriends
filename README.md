@@ -37,17 +37,23 @@
 
 > [!TIP]
 > ModWeaver is the standard mod-loader for SpiderHeck, and is what you will probably need when using other mods.
-> <br />If you're unsure which to install, go with ModWeaver. BepInEx 5 support is provided as an alternative or fallback.
+> <br />Silk is a newer, lightweight alternative mod loader with similar capabilities.
+> <br />If you're unsure which to install, go with ModWeaver or Silk. BepInEx 5 support is provided as an alternative or fallback.
 
 > [!IMPORTANT]
 > The [1.1.0 release](https://github.com/modweaver/modweaver/releases/tag/1.1.0) of **ModWeaver** is non-functional at time of writing;
-> Until a new release is published, BepInEx should be installed instead.
-2. **Install ModWeaver or BepInEx**
+> Until a new release is published, BepInEx or Silk should be installed instead.
+2. **Install a Mod Loader (choose one)**
 
     - **ModWeaver**
 
       Manually download the [latest release](https://github.com/modweaver/modweaver/releases/latest), and unzip it into your SpiderHeck directory.
       <br />Alternatively, follow the [instructions](https://docs.modweaver.org/users/installing-modweaver/) for using the ModWeaver installer.
+
+    - **Silk** (Recommended)
+
+      Download the [latest release](https://github.com/SilkModding/Silk/releases/latest), and unzip it into your SpiderHeck directory.
+      <br />Alternatively, follow the [installation instructions](https://github.com/SilkModding/Silk#installation) on the Silk repository.
 
     - **BepInEx**
 
@@ -56,7 +62,7 @@
 
 3. **Install InfiniteFriends**
 
-   Download the latest release for either [ModWeaver](https://github.com/Senyksia/InfiniteFriends/releases/latest/download/InfiniteFriends_ModWeaver.zip) or [BepInEx](https://github.com/Senyksia/InfiniteFriends/releases/latest/download/InfiniteFriends_BepInEx.zip), and unzip it into your SpiderHeck directory.
+   Download the latest release for [ModWeaver](https://github.com/Senyksia/InfiniteFriends/releases/latest/download/InfiniteFriends_ModWeaver.zip), [Silk](https://github.com/Senyksia/InfiniteFriends/releases/latest/download/InfiniteFriends_Silk.zip), or [BepInEx](https://github.com/Senyksia/InfiniteFriends/releases/latest/download/InfiniteFriends_BepInEx.zip), and unzip it into your SpiderHeck directory.
 
 
 ## Contributing
@@ -85,13 +91,13 @@
 
 3. **Set up your SpiderHeck directory**
 
-   Because we are building for multiple mod-loaders, your game directory will need to contain both of them (assuming you are building for both). This can mostly be done without conflict by simply installing both. Notably, however, each loader's `doorstop_config.ini` will need to be preserved. The Doorstop (`winhttp.dll`) version may also conflict; keeping the latest one should be sufficient.
+   Because we are building for multiple mod-loaders, your game directory will need to contain all of them (assuming you are building for all three). This can mostly be done without conflict by simply installing all three. Notably, however, each loader's `doorstop_config.ini` will need to be preserved. The Doorstop (`winhttp.dll`) version may also conflict; keeping the latest one should be sufficient.
 
    To launch with a particular loader, rename the dormant loader's `doorstop_config.ini` to something else, e.g. `doorstop_config.modweaver.ini`. This is a finicky solution, but as far as I can tell the `--doorstop-target-assembly` CLI parameter was broken in Doorstop 4, or I just can't get it to work.
 
 5. **Compile**
 
-   ModWeaver and BepInEx each have a build configuration.
+   ModWeaver, Silk, and BepInEx each have a build configuration.
    <br />Using Visual Studio or Rider, building will close the game and copy the compiled .dll directly into your mod folder.
 
 

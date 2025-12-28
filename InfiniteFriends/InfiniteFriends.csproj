@@ -5,7 +5,7 @@
     <LangVersion>13.0</LangVersion>
     <Platforms>AnyCPU</Platforms>
     <DebugType>portable</DebugType>
-    <Configurations>BepInEx-Debug;ModWeaver-Debug;BepInEx-Release;ModWeaver-Release</Configurations>
+    <Configurations>BepInEx-Debug;ModWeaver-Debug;Silk-Debug;BepInEx-Release;ModWeaver-Release;Silk-Release</Configurations>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
@@ -27,6 +27,10 @@
 
   <PropertyGroup Condition="$(Configuration.Contains('ModWeaver'))">
     <DefineConstants>$(DefineConstants);MODWEAVER</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(Configuration.Contains('Silk'))">
+    <DefineConstants>$(DefineConstants);SILK</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -53,6 +57,15 @@
     <EmbeddedResource Include="mw.mod.toml" LogicalName="mw.mod.toml" />
   </ItemGroup>
 
+  <ItemGroup Condition="$(Configuration.Contains('Silk'))">
+    <Reference Include="0Harmony">
+      <HintPath>$(GameDir)\Silk\Library\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Silk">
+      <HintPath>$(GameDir)\Silk\Library\Silk.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
   <ItemGroup>
     <Reference Include="MyScriptAssembly" Publicize="true" />
     <Reference Include="AstarPathfindingProject" />
@@ -68,5 +81,6 @@
     <Exec Command="taskkill /F /T /IM &quot;$(GameExe)&quot; /FI &quot;STATUS eq RUNNING&quot;" />
     <Copy Condition="$(Configuration.Contains('BepInEx'))" SourceFiles="$(TargetPath)" DestinationFolder="$(GameDir)\BepInEx\plugins" UseSymboliclinksIfPossible="true" />
     <Copy Condition="$(Configuration.Contains('ModWeaver'))" SourceFiles="$(TargetPath)" DestinationFolder="$(GameDir)\modweaver\mods" UseSymboliclinksIfPossible="true" />
+    <Copy Condition="$(Configuration.Contains('Silk'))" SourceFiles="$(TargetPath)" DestinationFolder="$(GameDir)\Silk\mods" UseSymboliclinksIfPossible="true" />
   </Target>
 </Project>

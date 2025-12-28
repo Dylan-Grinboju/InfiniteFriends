@@ -11,6 +11,8 @@ Global
 		ModWeaver-Debug|Any CPU = ModWeaver-Debug|Any CPU
 		BepInEx-Debug|Any CPU = BepInEx-Debug|Any CPU
 		ModWeaver-Release|Any CPU = ModWeaver-Release|Any CPU
+		Silk-Debug|Any CPU = Silk-Debug|Any CPU
+		Silk-Release|Any CPU = Silk-Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BA938F91-C585-4AB7-BA4F-590CD4604915}.BepInEx-Release|Any CPU.ActiveCfg = BepInEx-Release|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BA938F91-C585-4AB7-BA4F-590CD4604915}.BepInEx-Debug|Any CPU.Build.0 = BepInEx-Debug|Any CPU
 		{BA938F91-C585-4AB7-BA4F-590CD4604915}.ModWeaver-Release|Any CPU.ActiveCfg = ModWeaver-Release|Any CPU
 		{BA938F91-C585-4AB7-BA4F-590CD4604915}.ModWeaver-Release|Any CPU.Build.0 = ModWeaver-Release|Any CPU
+		{BA938F91-C585-4AB7-BA4F-590CD4604915}.Silk-Debug|Any CPU.ActiveCfg = Silk-Debug|Any CPU
+		{BA938F91-C585-4AB7-BA4F-590CD4604915}.Silk-Debug|Any CPU.Build.0 = Silk-Debug|Any CPU
+		{BA938F91-C585-4AB7-BA4F-590CD4604915}.Silk-Release|Any CPU.ActiveCfg = Silk-Release|Any CPU
+		{BA938F91-C585-4AB7-BA4F-590CD4604915}.Silk-Release|Any CPU.Build.0 = Silk-Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

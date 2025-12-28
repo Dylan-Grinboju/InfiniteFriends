@@ -5,33 +5,35 @@ using System.Reflection;
 using BepInEx;
 #elif MODWEAVER
 using modweaver.core;
+#elif SILK
+using Silk;
 #endif
 
 namespace InfiniteFriends;
 
 internal partial class InfiniteFriends
 {
-     public const int MaxPlayerHardCap = 32;
+    public const int MaxPlayerHardCap = 32;
 
-     public static InfiniteFriends Instance;
-     internal new static ILogger Logger { get; private set; }
+    public static InfiniteFriends Instance;
+    internal new static ILogger Logger { get; private set; }
 
-     public InfiniteFriends()
-     {
-         InfiniteFriends.Instance = this;
-     }
+    public InfiniteFriends()
+    {
+        InfiniteFriends.Instance = this;
+    }
 
-     private static void HarmonyPatch(string harmonyInstanceId)
-     {
-         try
-         {
-             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), harmonyInstanceId);
-         }
-         catch (Exception ex)
-         {
-             InfiniteFriends.Logger.LogError(ex.ToString());
-         }
-     }
+    private static void HarmonyPatch(string harmonyInstanceId)
+    {
+        try
+        {
+            Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), harmonyInstanceId);
+        }
+        catch (Exception ex)
+        {
+            InfiniteFriends.Logger.LogError(ex.ToString());
+        }
+    }
 }
 
 #if BEPINEX
@@ -57,5 +59,19 @@ internal partial class InfiniteFriends : Mod
 
     public override void Ready() { }
     public override void OnGUI(ModsMenuPopup ui) { }
+}
+#elif SILK
+[SilkMod(Metadata.PluginName, new[] { "Dylan" }, Metadata.PluginVersion, "0.6.1", Metadata.PluginGuid, 0)]
+internal partial class InfiniteFriends : SilkMod
+{
+    public override void Initialize()
+    {
+        InfiniteFriends.Logger = new SilkLoggerWrapper();
+        InfiniteFriends.HarmonyPatch(Metadata.PluginGuid);
+    }
+
+    public override void Unload()
+    {
+    }
 }
 #endif

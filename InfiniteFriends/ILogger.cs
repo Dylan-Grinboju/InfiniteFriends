@@ -1,5 +1,7 @@
 #if BEPINEX
 using BepInEx.Logging;
+#elif SILK
+using SilkLogger = Silk.Logger;
 #endif
 
 namespace InfiniteFriends;
@@ -30,5 +32,14 @@ internal class ModWeaverLogger(NLog.Logger logger) : ILogger
     public void LogWarning(object message) => logger.Warn(message);
     public void LogError(object message) => logger.Error(message);
     public void LogFatal(object message) => logger.Fatal(message);
+}
+#elif SILK
+internal class SilkLoggerWrapper : ILogger
+{
+    public void LogDebug(object message) => SilkLogger.Log(message?.ToString());
+    public void LogInfo(object message) => SilkLogger.LogInfo(message?.ToString());
+    public void LogWarning(object message) => SilkLogger.LogWarning(message?.ToString());
+    public void LogError(object message) => SilkLogger.LogError(message?.ToString());
+    public void LogFatal(object message) => SilkLogger.LogError($"FATAL: {message}");
 }
 #endif
