@@ -61,7 +61,11 @@ internal partial class InfiniteFriends : Mod
     public override void OnGUI(ModsMenuPopup ui) { }
 }
 #elif SILK
+#if SILK_070
+[SilkMod(Metadata.PluginName, new[] { "Dylan" }, Metadata.PluginVersion, "0.7.0", Metadata.PluginGuid, 0)]
+#else
 [SilkMod(Metadata.PluginName, new[] { "Dylan" }, Metadata.PluginVersion, "0.6.1", Metadata.PluginGuid, 0)]
+#endif
 internal partial class InfiniteFriends : SilkMod
 {
     public override void Initialize()

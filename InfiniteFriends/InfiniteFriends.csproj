@@ -5,7 +5,7 @@
     <LangVersion>13.0</LangVersion>
     <Platforms>AnyCPU</Platforms>
     <DebugType>portable</DebugType>
-    <Configurations>BepInEx-Debug;ModWeaver-Debug;Silk-Debug;BepInEx-Release;ModWeaver-Release;Silk-Release</Configurations>
+    <Configurations>BepInEx-Debug;ModWeaver-Debug;Silk061-Debug;Silk070-Debug;BepInEx-Release;ModWeaver-Release;Silk061-Release;Silk070-Release</Configurations>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
@@ -31,6 +31,14 @@
 
   <PropertyGroup Condition="$(Configuration.Contains('Silk'))">
     <DefineConstants>$(DefineConstants);SILK</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(Configuration.Contains('Silk061'))">
+    <DefineConstants>$(DefineConstants);SILK_061</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(Configuration.Contains('Silk070'))">
+    <DefineConstants>$(DefineConstants);SILK_070</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
